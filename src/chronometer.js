@@ -11,27 +11,31 @@ class Chronometer {
   }, 1000)}
 
   getMinutes() {
-    return math.floor(this.currentTime/60)
+    let minutes =  math.floor(this.currentTime/60);
+    return minutes;
   };
 
 
   getSeconds() {
-    // ... your code goes here
-  }
+    let seconds = this.currentTime % 60;
+    return seconds;  }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    return ("0" + value).slice(-2);
   }
 
   stop() {
-    // ... your code goes here
-  }
+    clearInterval(this.intervalId);
+    clearInterval(this.millisecondsIntervalId);  }
 
   reset() {
-    // ... your code goes here
+    this.currentTime = 0;
   }
 
   split() {
-    // ... your code goes here
-  }
+    let minutes = this.computeTwoDigitNumber(this.getMinutes());
+    let seconds = this.computeTwoDigitNumber(this.getSeconds());
+    let milliseconds = this.computeTwoDigitNumber(this.currentMilliseconds); // <= BONUS 
+
+    return `${minutes}:${seconds}:${milliseconds}`;  }
 };
